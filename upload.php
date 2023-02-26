@@ -15,9 +15,9 @@ if(isset($_FILES["file"])) {
     // Si le fichier est valide, déplacez-le vers le dossier de téléchargement
     $new_file_name = uniqid("", true) . "." . $file_ext;
     move_uploaded_file($file_tmp, "uploads/" . $new_file_name);
+    $domain = $_SERVER['HTTP_HOST'];
     echo "Le fichier $file_name a été téléchargé avec succès.<br />";
-    echo "Lien de téléchargement : <a href='http://uploads.slohweb.ml/uploads/$new_file_name' target='_blank'>http://uploads.slohweb.ml/uploads/$new_file_name</a>";
-
+    echo "Lien de téléchargement : <a href='http://{$domain}/uploads/{$new_file_name}' target='_blank'>http://{$domain}/uploads/{$new_file_name}</a>";
 
 
   } else {
@@ -26,4 +26,3 @@ if(isset($_FILES["file"])) {
   }
 }
 ?>
-

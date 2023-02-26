@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Uploader un fichier</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<script type="text/javascript" src="index.js"></script>
+	<title>Upload File</title>
 </head>
 <body>
-	<form action="upload.php" method="POST" enctype="multipart/form-data">
-		<label for="file">Sélectionnez le fichier à envoyer :</label>
-		<input type="file" name="file" id="file"><br>
-		<input type="submit" name="submit" value="Envoyer">
+	<form>
+		<label for="file">Choisissez un fichier à télécharger :</label>
+		<input type="file" id="file" name="file"><br><br>
+		<input type="submit" value="Télécharger">
 	</form>
-
+	<script>
+		// Récupérer le champ de fichier
+		var fileInput = document.getElementById("file");
+		
+		// Ajouter un écouteur d'événements sur le formulaire de téléchargement
+		document.forms[0].addEventListener("submit", function(event) {
+			event.preventDefault(); // Empêcher la soumission du formulaire
+			var file = fileInput.files[0]; // Récupérer le fichier sélectionné
+			var xhr = new XMLHttpRequest(); // Créer une requête AJAX
+			var formData = new FormData(); // Créer un objet FormData pour envoyer le fichier
+			formData.append("file", file); // Ajouter le fichier à l'objet FormData
+			xhr.open("POST", "upload.php"); // Envoyer la requête vers upload.php
+			xhr.onload = function() { // Lorsque la requête est terminée
+				if (xhr.status === 200) { // Si la réponse est OK
+					alert("Le fichier a été téléchargé avec succès !");
+				} else { // Si la réponse est un erreur
+					alert("Une erreur est survenue lors du téléchargement du fichier.");
+				}
+			};
+			xhr.send(formData); // Envoyer l'objet FormData contenant le fichier
+		});
+	</script>
 </body>
 </html>

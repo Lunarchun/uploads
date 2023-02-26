@@ -1,0 +1,37 @@
+/* Style pour la page d'accueil */
+h1 {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 50px;
+}
+p {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* Style pour le formulaire de téléchargement de fichier */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+input[type=file] {
+  margin-bottom: 20px;
+}
+input[type=submit] {
+  font-size: 1.2em;
+  padding: 10px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+input[type=submit]:hover {
+  background-color: #3e8e41;
+}
